@@ -1,16 +1,19 @@
 export default class SpiralMaker {
-  constructor(size) {
-    // TODO: validate size to make sure it's a sane number
-    this.size = size || 6;
-    this.sizeSquared = size * size;
+  constructor() {
+    this.size = 10;
+    this.sizeSquared = this.size * this.size;
     this.n = 1;
 
-    this._initXY();
-    this._initGrid();
-    this._populateGrid();
+    this.initGrid();
   }
 
-  _initXY() {
+  initGrid(newSize) {
+    this.size = newSize || this.size;
+    this.grid = [];
+    for (let i = 0; i < this.size; i++) {
+      this.grid[i] = [];
+    }
+
     if (this.size % 2 === 0) {
       this.x = this.size / 2 - 1;
       this.y = this.size / 2 - 1;
@@ -20,50 +23,43 @@ export default class SpiralMaker {
     }
   }
 
-  _initGrid() {
-    this.grid = [];
-    for (let i = 0; i < this.size; i++) {
-      this.grid[i] = [];
-    }
+  _setPoint() {
+    this.grid[this.x][this.y] = this.n;
+    this.n++;
   }
 
   _right(times) {
     for (let i = 0; i < times; i++) {
-      this.grid[this.x][this.y] = this.n;
-
-      this.x = this.x + 1;
-      this.n++;
+      this._setPoint();
+      this.x++;
     }
   }
 
   _up(times) {
     for (let i = 0; i < times; i++) {
-      this.grid[this.x][this.y] = this.n;
-
-      this.y = this.y + 1;
-      this.n++;
+      this._setPoint();
+      this.y++;
     }
   }
 
   _left(times) {
     for (let i = 0; i < times; i++) {
-      this.grid[this.x][this.y] = this.n;
-
-      this.x = this.x - 1;
-      this.n++;
+      this._setPoint();
+      this.x--;
     }
   }
 
   _down(times) {
     for (let i = 0; i < times; i++) {
-      this.grid[this.x][this.y] = this.n;
-
-      this.y = this.y - 1;
-      this.n++;
+      this._setPoint();
+      this.y--;
     }
   }
 
-  _populateGrid() {
+  /**
+   * Populate the grid with a spiral of numbers. 
+   */
+  populateGrid() {
     for (let i = 1; i < this.size; i++) {
       if (i % 2 === 1) {
         this._up(i);
@@ -78,5 +74,9 @@ export default class SpiralMaker {
     } else { 
       this._down(this.size);
     }
+  }
+
+  getGrid() {
+    return this.grid;
   }
 }

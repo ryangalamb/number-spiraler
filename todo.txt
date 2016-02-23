@@ -1,0 +1,30 @@
+__TODO__
+
+- [ ] write SpiralMaker so that it doesn't segfault with obscenely large numbers
+  - why yes, I did manage to get a literal segfault in JavaScript. I am both
+  proud and ashamed.
+- [ ] play more with performance
+- [x] write a function to render the grid
+  - this is not in the repo at this point because it feels dirty to combine the
+  rendering logic in the same module as the grid logic. That being said, I did
+  it in a jsfiddle here: https://jsfiddle.net/rjmill/125uue4h/2/
+  - [ ] make a repo that includes the rendering logic
+- [ ] sanitize input
+- [x] write a prime number checker (don't you dare optimize it yet though)
+  - [ ] go ahead and optimize it. This is low priority for now, since the way it
+  is now, it runs plenty fast.
+- [x] add a flag to each number to show primality (make it flexible enough to
+easily add filtering divisibility by any old number)
+- [ ] modify the point setting function to be more flexible with how it tags
+primes. As of right now, it's practically useless for tagging other things.
+  - probably use plaintext flags for that, so you can use them as classes
+  verbatim and for legibility
+- [ ] look into reorganizing the logic for the directions. Have directions just
+be an object with each direction and the function for the movement logic. Then
+do the other steps involved elsewhere.
+- [ ] filter functions that can run on already made spirals.
+- [ ] update the es6 version to more closely match the es5 version
+- [ ] find a sensible way to get private methods and variables in es6 classes.
+- [ ] wire up babel to make the es6 version actually work
+- [ ] do whatever needs to be done to make this an actual importable npm module
+- [ ] improve documentation.
