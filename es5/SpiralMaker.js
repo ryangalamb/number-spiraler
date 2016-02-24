@@ -13,14 +13,14 @@ module.exports = (function() {
    *
    * Depends on size
    */
-  var initGrid = function(newSize) {
-    size = newSize || size;
+  var initGrid = function(gridSize) {
+    size = gridSize || size;
 
     grid = [];
     for (var i = 0; i < size; i++) {
       grid[i] = [];
     }
-
+    // REVIEW: consider splitting this part out into a separate function
     if (size % 2 === 0) {
       x = size / 2 - 1;
       y = size / 2 - 1;
@@ -28,7 +28,7 @@ module.exports = (function() {
       x = Math.floor(size / 2);
       y = Math.floor(size / 2);
     }
-  }
+  };
 
   /**
    * Naive brute force prime checker. I will optimize this later, but for now,
@@ -36,6 +36,9 @@ module.exports = (function() {
    */
   var isPrime = function(num) { // OPTIMIZE: this runs a bunch.
     var maxPossible = Math.sqrt(num);
+    if (n === 1) {
+      return false;
+    }
 
     for (var i = 2; i <= maxPossible; i++) {
       if (num % i === 0) {
@@ -43,16 +46,22 @@ module.exports = (function() {
       }
     }
     return true;
-  }
+  };
 
   /**
-   * Sets grid's current x and y to a two element array [num, bool], where the
-   * number is the value of n, and the boolean is whether or not that value is
-   * prime. Also increments n by one.
+   * Sets grid's current x and y to a two element array [num, ...], where the
+   * number is the value of n, and the rest of the elements are "tags" that
+   * identify properties of the number. Also increments n by one.
+   *
+   * NOTE: This implementation might get messy. Keep an eye on it as your
+   * project grows.
    */
   var setPoint = function() {
-    var nIsPrime = isPrime(n);
-    grid[x][y] = [n, nIsPrime];
+    var result = [n];
+    if (isPrime(n)) {
+      result[1] = "prime";
+    }
+    grid[x][y] = result;
     n++;
   }
 
@@ -104,7 +113,29 @@ module.exports = (function() {
     } else {
       direction.down(size);
     }
+  };
+
+  var generateGrid = function(gridSize) {
+    initGrid(gridSize);
+    populateGrid();
   }
+
+  /**
+   * Filter the grid with a filter function, applying the tag string if the
+   * function returns true.
+   */
+  var filterGrid = function(callback, tag) {
+    grid.
+      map(function(row) {
+      return row.
+        map(function(elem) {
+        if (callback(elem[0])) {
+          elem[elem.length] = tag;
+        }
+        return elem;
+      });
+    });
+  };
 
   return {
     // public variables and functions
@@ -116,5 +147,7 @@ module.exports = (function() {
     },
     initGrid: initGrid,
     populateGrid: populateGrid,
+    generateGrid: generateGrid,
+    filterGrid: filterGrid,
   };
 })();

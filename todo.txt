@@ -15,16 +15,27 @@ __TODO__
   is now, it runs plenty fast.
 - [x] add a flag to each number to show primality (make it flexible enough to
 easily add filtering divisibility by any old number)
-- [ ] modify the point setting function to be more flexible with how it tags
+- [x] modify the point setting function to be more flexible with how it tags
 primes. As of right now, it's practically useless for tagging other things.
   - probably use plaintext flags for that, so you can use them as classes
   verbatim and for legibility
 - [ ] look into reorganizing the logic for the directions. Have directions just
 be an object with each direction and the function for the movement logic. Then
 do the other steps involved elsewhere.
-- [ ] filter functions that can run on already made spirals.
+- [x] filter functions that can run on already made spirals.
 - [ ] update the es6 version to more closely match the es5 version
 - [ ] find a sensible way to get private methods and variables in es6 classes.
 - [ ] wire up babel to make the es6 version actually work
 - [ ] do whatever needs to be done to make this an actual importable npm module
 - [ ] improve documentation.
+- [ ] I want a composable filter step to basically define a bunch of filters
+that are evaluated.
+  - do I really though? For now, it seems a tad unnecessary.
+- [ ] see if there isn't a way to make the grid elements more expressive.
+  - it looks like in JavaScript, Arrays are just Objects with numbers as keys.
+  If this is the case, is the potential performance hit of using objects instead
+  of arrays significant enough to justify not using objects?
+  - test that.
+- [ ] extract prime seive out of the SpiralMaker module. It doesn't fit in
+logically, and now that I've got the filterGrid function, we don't need it in
+there.
