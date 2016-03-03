@@ -1,5 +1,8 @@
 __TODO__
 
+- publish the module on npm
+  - refactor it into npm-friendly syntax
+
 - [ ] write SpiralMaker so that it doesn't segfault with obscenely large numbers
   - why yes, I did manage to get a literal segfault in JavaScript. I am both
   proud and ashamed.
