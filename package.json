@@ -1,0 +1,23 @@
+{
+  "name": "number-spiraler",
+  "version": "0.0.1",
+  "description": "Generate number spirals for use in Ulam Spirals and more",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape 'test/**/*.test.js' | faucet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjmill/number-spiraler.git"
+  },
+  "author": "RJ Miller <rjmiller10@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjmill/number-spiraler/issues"
+  },
+  "homepage": "https://github.com/rjmill/number-spiraler#readme",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^4.5.1"
+  }
+}
