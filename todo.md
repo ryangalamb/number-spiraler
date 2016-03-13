@@ -1,22 +1,21 @@
 #TODO
 
-- [ ] write the tests
 - [ ] publish the module on npm
 - [ ] rename n to currentNumber
 - [ ] probably define the getters outside the returned object in SpiralMaker
 - [ ] decide how error handling should work
+  - I should probably wait to see how callback-y this ends up being
 - [ ] sanitize input
   - numbers only
   - no negatives
   - no zero
-- [ ] get rid of default size functionality
 - [ ] look into reorganizing the logic for the directions. Have directions just
 be an object with each direction and the function for the movement logic. Then
 do the other steps involved elsewhere.
 - [ ] find a sensible way to get private methods and variables in es6 classes.
+- [ ] put es6 version on github
 - [ ] update the es6 version to more closely match the es5 version
 - [ ] wire up babel to make the es6 version actually work
-- [ ] do whatever needs to be done to make this an actual importable npm module
 - [ ] improve documentation.
 - [ ] I want a composable filter step to basically define a bunch of filters
 that are evaluated.
@@ -31,6 +30,8 @@ that are evaluated.
   proud and ashamed.
   - incredibly low priority for now. It works well enough for what I want.
 - [ ] play more with performance
+- [x] get rid of default size functionality
+- [x] write the tests
 - [x] modify the point setting function to be more flexible with how it tags
 primes. As of right now, it's practically useless for tagging other things.
   - probably use plaintext flags for that, so you can use them as classes
@@ -44,9 +45,11 @@ easily add filtering divisibility by any old number)
   rendering logic in the same module as the grid logic. That being said, I did
   it in a jsfiddle here: https://jsfiddle.net/rjmill/125uue4h/2/
   - [ ] make a repo that includes the rendering logic
+- [x] do whatever needs to be done to make this an actual importable npm module
 - [x] write a prime number checker (don't you dare optimize it yet though)
-  - [ ] go ahead and optimize it. This is low priority for now, since the way it
-  is now, it runs plenty fast.
+  - [ ] ~~go ahead and optimize it. This is low priority for now, since the way
+  it is now, it runs plenty fast.~~ _That logic isn't part of this module
+  anymore_
 - [x] extract prime seive out of the SpiralMaker module. It doesn't fit in
 logically, and now that I've got the filterGrid function, we don't need it in
 there.
